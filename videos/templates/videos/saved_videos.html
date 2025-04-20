@@ -1,0 +1,17 @@
+<h2>Your Saved Videos</h2>
+
+{% if videos %}
+    <div style="display: flex; flex-wrap: wrap;">
+        {% for video in videos %}
+            <div style="width: 300px; border: 1px solid #ddd; margin: 10px; padding: 10px;">
+                <img src="{{ video.thumbnail_url }}" alt="Thumbnail" width="100%">
+                <h3>{{ video.title }}</h3>
+                <p>{{ video.description|truncatechars:100 }}</p>
+                <p><strong>Views:</strong> {{ video.views }}</p>
+                <a href="https://www.youtube.com/watch?v={{ video.youtube_video_id }}" target="_blank">Watch on YouTube</a>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>You haven't saved any videos yet.</p>
+{% endif %}

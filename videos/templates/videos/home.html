@@ -1,0 +1,14 @@
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }} | 
+       <a href="{% url 'logout' %}">Logout</a></p>
+
+    <p><a href="{% url 'saved_videos' %}">My Saved Videos</a></p>
+
+    {% if user.is_superuser %}
+        <p style="color: red;">You are an Admin</p>
+    {% endif %}
+
+{% else %}
+    <a href="{% url 'login' %}">Login</a> | 
+    <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
